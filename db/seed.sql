@@ -1,12 +1,15 @@
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS users;
+
 create table users (
-    user_id serial primary key,
-    user_email varchar(100),
-    user_password varchar(250)
+    id serial primary key,
+    email varchar(100),
+    hash varchar(250)
 );
 
-create table if not exists post (
-    post_id serial primary key,
-    user_id int references users(user_id),
-    text varchar(250),
-    p_time date
+create table if not exists posts (
+    id serial primary key,
+    users_id int references users(id),
+    content varchar(250),
+    created_at date
 );
